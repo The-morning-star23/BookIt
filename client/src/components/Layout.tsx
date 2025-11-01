@@ -26,9 +26,6 @@ const Layout = () => {
               alt="Highway Delite Logo"
               className="w-[100px] h-[55px] object-contain"
             />
-            <span className="font-bold text-xl hidden sm:inline">
-              Highway Delite
-            </span>
           </Link>
 
           {/* --- SEARCH BAR & BUTTON --- */}
