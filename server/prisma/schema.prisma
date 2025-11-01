@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Experience Model: Stores the main travel packages.
+model Experience {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String
+  price       Float
+  location    String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // An experience can have many available slots
+  slots Slot[]
+}
+
+// 2. Slot Model: Stores the available times for each experience.
+model Slot {
+  id             Int      @id @default(autoincrement())
+  startTime      DateTime // e.g., 2025-10-22T09:00:00
+  endTime        DateTime // e.g., 2025-10-22T10:00:00
+  totalSpots     Int      // Total spots for this slot (e.g., 10)
+  spotsAvailable Int      // Spots remaining (e.g., 4)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relation to the parent experience
+  experienceId Int
+  experience   Experience @relation(fields: [experienceId], references: [id])
+
+  // A slot can be included in many bookings
+  bookings Booking[]
+
+  // Ensure a slot is unique to an experience and start time
+  @@unique([experienceId, startTime])
+}
+
+// 3. Booking Model: Stores the user's confirmed booking.
+model Booking {
+  id         Int      @id @default(autoincrement())
+  userName   String
+  userEmail  String
+  quantity   Int // <-- THIS IS THE NEW FIELD
+  promoCode  String? // Optional promo code
+  finalPrice Float // The price the user actually paid
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relation to the specific slot that was booked
+  slotId Int
+  slot   Slot @relation(fields: [slotId], references: [id])
+}

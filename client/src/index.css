@@ -1,0 +1,11 @@
+/* Import Tailwind's base, components, and utilities layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add a base style to match the Figma design's background */
+@layer base {
+  body {
+    @apply bg-zinc-100 text-zinc-900;
+  }
+}
