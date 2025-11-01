@@ -2,9 +2,9 @@ BookIt: Experiences & Slots
 This is a complete end-to-end web application built for a full-stack internship assignment. The project allows users to browse travel experiences, view available dates and time slots, select a quantity, and complete a secure booking. The application is built from scratch based on a provided Figma design, with a focus on real-world API integration, database transactions, and a clean, responsive UI.
 
 🚀 Live Demo (Placeholders)
-Frontend (Vercel): [Your Deployed Frontend Link Here]
+Frontend (Vercel): [https://book-it-wheat-mu.vercel.app/]
 
-Backend (Railway/Render): [Your Deployed Backend Link Here]
+Backend (Render): [https://bookit-api-cbhc.onrender.com]
 
 ✨ Features
 Browse & Search: View all travel experiences in a responsive 4-column grid. Filter experiences by title, location, or description using the search bar.
@@ -51,7 +51,7 @@ A free PostgreSQL database URL (e.g., from Aiven, Supabase, or Railway)
 1. Clone the Repository
 Bash
 
-git clone https://github.com/your-username/bookit-assignment.git
+git clone https://github.com/The-morning-star23/BookIt.git
 cd bookit-assignment
 2. Set Up the Backend (server)
 Navigate to the server directory:
